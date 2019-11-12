@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 
 import com.example.princetonbus.R;
 
@@ -14,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
         allowNetworkUsage();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DataScrape d = new DataScrape(84);
+        d.initAgency();
     }
 
     private void allowNetworkUsage() {

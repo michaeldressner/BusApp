@@ -30,6 +30,10 @@ public class Agency {
         this.id = id;
         this.location = location;
         this.name = name;
+
+        this.stops = new ArrayList<>();
+        this.routes = new ArrayList<>();
+        this.vehicles = new ArrayList<>();
     }
 
     public void addStop(Stop stop) {
