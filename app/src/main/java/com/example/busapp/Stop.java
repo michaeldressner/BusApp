@@ -31,6 +31,10 @@ public class Stop {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public int getID() {
         return id;
     }
@@ -39,12 +43,18 @@ public class Stop {
         return locationType;
     }
 
-    public String getName() {
-        return name;
+    public void setLocationType(String locationType) {
+        this.locationType = locationType;
     }
+
+    public String getName() { return name; }
 
     public int getParentStationID() {
         return parentStationID;
+    }
+
+    public void setParentStationID(int parentStationID) {
+        this.parentStationID = parentStationID;
     }
 
     public Position getPosition() { return position; }
@@ -52,6 +62,8 @@ public class Stop {
     public String getURL() {
         return url;
     }
+
+    public void setURL(String url) { this.url = url; }
 
     @Override
     public boolean equals(@Nullable Object obj) {
@@ -62,5 +74,13 @@ public class Stop {
         }
 
         return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        String result = "Stop: id=" + id + ",code=" + code + ",name=" + name +
+                ",position=(" + position.getLatitude() + "," +
+                position.getLongitude() + ")";
+        return result;
     }
 }

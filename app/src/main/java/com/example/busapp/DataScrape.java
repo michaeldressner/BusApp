@@ -44,8 +44,18 @@ public class DataScrape {
             JSONObject jsonBody = new JSONObject(json);
             JSONArray stops = jsonBody.getJSONArray("stops");
 
-            for (JSONObject stop : stops) {
+            for (int i = 0; i < stops.length(); ++i) {
+                JSONObject stopObj = stops.getJSONObject(i);
 
+                String code = stopObj.getString("code");
+                int id = stopObj.getInt("id");
+                String name = stopObj.getString("name");
+                JSONArray position = stopObj.getJSONArray("position");
+                double latitude = position.getDouble(0);
+                double longitude = position.getDouble(1);
+
+                Stop stop = new Stop(code, id, name, latitude, longitude);
+                agency.addStop(stop);
             }
 
             return true;
