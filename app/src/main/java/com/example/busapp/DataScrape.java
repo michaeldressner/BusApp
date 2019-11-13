@@ -37,4 +37,24 @@ public class DataScrape {
             return false;
         }
     }
+
+    public boolean initStops() {
+        String json = stopReq.get();
+        try {
+            JSONObject jsonBody = new JSONObject(json);
+            JSONArray stops = jsonBody.getJSONArray("stops");
+
+            for (JSONObject stop : stops) {
+
+            }
+
+            return true;
+        } catch (JSONException e) {
+            return false;
+        }
+    }
+
+    public Agency getAgency() {
+        return agency;
+    }
 }

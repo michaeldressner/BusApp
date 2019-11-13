@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         DataScrape d = new DataScrape(84);
         d.initAgency();
+        d.initStops();
     }
 
     private void allowNetworkUsage() {

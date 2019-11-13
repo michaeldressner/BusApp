@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 public class Stop {
     private String code;
     private String description;
-    private Integer id;
+    private int id;
     private String locationType;
     private String name;
     private Integer parentStationID;
@@ -15,17 +15,12 @@ public class Stop {
     private Stop() {
     }
 
-    public Stop(String code, String description, int id, String locationType,
-                String name, int parentStationID, double latitude,
-                double longitude, String url) {
+    public Stop(String code, int id, String name, double latitude,
+                double longitude) {
         this.code = code;
-        this.description = description;
         this.id = id;
-        this.locationType = locationType;
         this.name = name;
-        this.parentStationID = parentStationID;
         this.position = new Position(latitude, longitude);
-        this.url = url;
     }
 
     public String getCode() {

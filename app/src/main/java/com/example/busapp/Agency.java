@@ -48,6 +48,12 @@ public class Agency {
         vehicles.add(vehicle);
     }
 
+    public int getID() { return id; }
+
+    public String getLocation() { return location; }
+
+    public String getName() { return name; }
+
     @Override
     public boolean equals(@Nullable Object obj) {
         if (obj instanceof Agency) {
