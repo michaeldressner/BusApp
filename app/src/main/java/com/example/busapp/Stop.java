@@ -49,7 +49,7 @@ public class Stop {
 
     public String getName() { return name; }
 
-    public int getParentStationID() {
+    public Integer getParentStationID() {
         return parentStationID;
     }
 

@@ -18,9 +18,12 @@ public class DataScrape {
                 "agencies?agencies=" + agencyID);
         stopReq = new URLRequest("https://feeds.transloc.com/3/" +
                 "stops?include_routes=true&agencies=" + agencyID);
+
+        initAgency();
+        initStops();
     }
 
-    public boolean initAgency() {
+    private boolean initAgency() {
         String json = agencyReq.get();
         try {
             JSONObject jsonBody = new JSONObject(json);
@@ -38,7 +41,7 @@ public class DataScrape {
         }
     }
 
-    public boolean initStops() {
+    private boolean initStops() {
         String json = stopReq.get();
         try {
             JSONObject jsonBody = new JSONObject(json);
@@ -53,8 +56,16 @@ public class DataScrape {
                 JSONArray position = stopObj.getJSONArray("position");
                 double latitude = position.getDouble(0);
                 double longitude = position.getDouble(1);
+                String description = stopObj.getString("description");
+                String locationType = stopObj.getString("location_type");
+                Object parentStation = stopObj.get("parent_station_id");
+                int parentStationID = (stopObj.isNull("parent_station_id")) ? 0 : (int) parentStation;
 
                 Stop stop = new Stop(code, id, name, latitude, longitude);
+                stop.setDescription(description);
+                stop.setLocationType(locationType);
+                stop.setParentStationID(parentStationID);
+
                 agency.addStop(stop);
             }
 

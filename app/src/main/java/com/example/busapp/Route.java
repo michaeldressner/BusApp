@@ -28,12 +28,48 @@ public class Route {
         this.longName = longName;
         this.shortName = shortName;
         this.url = url;
+
+        stops = new ArrayList<>();
     }
+
+    public String getColor() { return color; }
+
+    public void setColor(String color) { this.color = color; }
+
+    public String getDescription() { return description; }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isActive() { return active; }
+
+    public void setActive(boolean active) { this.active = active; }
+
+    public String getLongName() { return longName; }
+
+    public void setLongName(String longName) { this.longName = longName; }
+
+    public String getTextColor() { return textColor; }
+
+    public void setTextColor(String textColor) { this.textColor = textColor; }
+
+    public String getType() { return type; }
+
+    public void setType(String type) { this.type = type; }
+
+    public String getURL() { return url; }
+
+    public void setURL(String url) { this.url = url; }
 
     public void addStops(ArrayList<Stop> stops) {
         for (Stop stop : stops) {
             this.stops.add(stop);
         }
+    }
+
+    public void addStop(Stop stop) {
+        this.stops.add(stop);
     }
 
     public ArrayList<Stop> getStops() {

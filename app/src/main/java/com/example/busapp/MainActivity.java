@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DataScrape d = new DataScrape(84);
-        d.initAgency();
-        d.initStops();
     }
 
     private void allowNetworkUsage() {

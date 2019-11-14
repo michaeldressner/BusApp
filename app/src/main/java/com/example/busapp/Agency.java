@@ -44,6 +44,10 @@ public class Agency {
         routes.add(route);
     }
 
+    public void addStopToRoute(Route route, Stop stop) {
+        route.addStop(stop);
+    }
+
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
     }
