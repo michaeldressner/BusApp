@@ -112,11 +112,29 @@ public class DataScrape {
                 int id = route.getInt("id");
                 Route r = agency.getRouteByID(id);
 
+                if (!route.isNull("bounds")) {
+                    JSONArray bounds = route.getJSONArray("bounds");
+
+                    double tlLat = bounds.getDouble(0);
+                    double tlLong = bounds.getDouble(1);
+                    double brLat = bounds.getDouble(2);
+                    double brLong = bounds.getDouble(3);
+
+                    r.setBounds(new MapBounds(tlLat, tlLong, brLat, brLong));
+                }
+
                 boolean active = route.getBoolean("is_active");
                 r.setActive(active);
-
                 String longName = route.getString("long_name");
                 r.setLongName(longName);
+                String shortName = route.getString("short_name");
+                r.setShortName(shortName);
+                String type = route.getString("type");
+                r.setType(type);
+                String color = route.getString("color");
+                r.setColor(color);
+                String textColor = route.getString("text_color");
+                r.setTextColor(textColor);
             }
 
             return true;
