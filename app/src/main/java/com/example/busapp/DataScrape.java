@@ -11,6 +11,7 @@ public class DataScrape {
     private int agencyID;
     private URLRequest agencyReq;
     private URLRequest stopReq;
+    private URLRequest routeReq;
 
     public DataScrape(int agencyID) {
         this.agencyID = agencyID;
@@ -18,9 +19,12 @@ public class DataScrape {
                 "agencies?agencies=" + agencyID);
         stopReq = new URLRequest("https://feeds.transloc.com/3/" +
                 "stops?include_routes=true&agencies=" + agencyID);
+        routeReq = new URLRequest("https://feeds.transloc.com/3/" +
+                "routes?agencies=" + agencyID);
 
         initAgency();
-        initStops();
+        initStopsAndRoutes();
+        getRouteData();
     }
 
     private boolean initAgency() {
@@ -41,7 +45,7 @@ public class DataScrape {
         }
     }
 
-    private boolean initStops() {
+    private boolean initStopsAndRoutes() {
         String json = stopReq.get();
         try {
             JSONObject jsonBody = new JSONObject(json);
@@ -67,6 +71,43 @@ public class DataScrape {
                 stop.setParentStationID(parentStationID);
 
                 agency.addStop(stop);
+            }
+
+            // Init route info as well
+            JSONArray routes = jsonBody.getJSONArray("routes");
+
+            for (int i = 0; i < routes.length(); ++i) {
+                JSONObject routeObj = routes.getJSONObject(i);
+
+                int id = routeObj.getInt("id");
+                Route route = new Route(id);
+
+                JSONArray stopList = routeObj.getJSONArray("stops");
+
+                for (int j = 0; j < stopList.length(); ++j) {
+                    int stopID = stopList.getInt(j);
+                    Stop stop = agency.getStopByID(stopID);
+                    route.addStop(stop);
+                }
+
+                agency.addRoute(route);
+            }
+
+            return true;
+        } catch (JSONException e) {
+            return false;
+        }
+    }
+
+    public boolean getRouteData() {
+        String json = routeReq.get();
+
+        try {
+            JSONObject jsonBody = new JSONObject(json);
+            JSONArray routes = jsonBody.getJSONArray("routes");
+
+            for (int i = 0; i < routes.length(); ++i) {
+                JSONObject route = routes.getJSONObject(i);
             }
 
             return true;

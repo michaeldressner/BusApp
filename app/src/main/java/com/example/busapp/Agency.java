@@ -1,5 +1,7 @@
 package com.example.busapp;
 
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -50,6 +52,28 @@ public class Agency {
 
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
+    }
+
+    public Stop getStopByID(int stopID) {
+        // Create a fake stop with ID = stopID. Only this field matters in the
+        // equals method anyways.
+
+        Stop search = new Stop("", stopID, "", 0, 0);
+
+        int idx = stops.indexOf(search);
+
+        return stops.get(idx);
+    }
+
+    public Route getRouteByID(int routeID) {
+        // Create a fake route with ID = routeID. Only this field matters in the
+        // equals method anyways.
+
+        Route search = new Route(routeID);
+
+        int idx = routes.indexOf(search);
+
+        return routes.get(idx);
     }
 
     public int getID() { return id; }

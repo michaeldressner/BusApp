@@ -20,14 +20,8 @@ public class Route {
     private Route() {
     }
 
-    public Route(MapBounds bounds, String description, int id,
-                 String longName, String shortName, String url) {
-        this.bounds = bounds;
-        this.description = description;
+    public Route(int id) {
         this.id = id;
-        this.longName = longName;
-        this.shortName = shortName;
-        this.url = url;
 
         stops = new ArrayList<>();
     }
@@ -61,6 +55,14 @@ public class Route {
     public String getURL() { return url; }
 
     public void setURL(String url) { this.url = url; }
+
+    public MapBounds getBounds() { return bounds; }
+
+    public void setBounds(MapBounds bounds) { this.bounds = bounds; }
+
+    public String getShortName() { return shortName; }
+
+    public void setShortName(String shortName) { this.shortName = shortName; }
 
     public void addStops(ArrayList<Stop> stops) {
         for (Stop stop : stops) {
