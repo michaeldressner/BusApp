@@ -93,7 +93,7 @@ public class Route {
         if (obj instanceof Route) {
             Route route = (Route) obj;
 
-            return (this.id == route.id);
+            return (this.id.equals(route.id));
         }
 
         return super.equals(obj);

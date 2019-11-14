@@ -62,7 +62,8 @@ public class Agency {
 
         int idx = stops.indexOf(search);
 
-        return stops.get(idx);
+        if (idx < 0) return null;
+        else return stops.get(idx);
     }
 
     public Route getRouteByID(int routeID) {
@@ -73,7 +74,8 @@ public class Agency {
 
         int idx = routes.indexOf(search);
 
-        return routes.get(idx);
+        if (idx < 0) return null;
+        else return routes.get(idx);
     }
 
     public int getID() { return id; }

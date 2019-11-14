@@ -99,7 +99,7 @@ public class DataScrape {
         }
     }
 
-    public boolean getRouteData() {
+    private boolean getRouteData() {
         String json = routeReq.get();
 
         try {
@@ -108,6 +108,15 @@ public class DataScrape {
 
             for (int i = 0; i < routes.length(); ++i) {
                 JSONObject route = routes.getJSONObject(i);
+
+                int id = route.getInt("id");
+                Route r = agency.getRouteByID(id);
+
+                boolean active = route.getBoolean("is_active");
+                r.setActive(active);
+
+                String longName = route.getString("long_name");
+                r.setLongName(longName);
             }
 
             return true;
