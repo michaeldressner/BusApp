@@ -84,6 +84,8 @@ public class Agency {
 
     public String getName() { return name; }
 
+    public ArrayList<Stop> getStops() { return stops; }
+
     @Override
     public boolean equals(@Nullable Object obj) {
         if (obj instanceof Agency) {
