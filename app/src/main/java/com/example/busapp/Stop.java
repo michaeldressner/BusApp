@@ -53,7 +53,7 @@ public class Stop {
         return parentStationID;
     }
 
-    public void setParentStationID(int parentStationID) {
+    public void setParentStationID(Integer parentStationID) {
         this.parentStationID = parentStationID;
     }
 

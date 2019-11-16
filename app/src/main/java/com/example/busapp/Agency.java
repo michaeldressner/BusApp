@@ -21,7 +21,7 @@ public class Agency {
     private String shortName;
     private String textColor;
     private String timeZone;
-    private int timeZoneOffset;
+    private Integer timeZoneOffset;
     private String url;
 
     private ArrayList<Stop> stops;
@@ -138,9 +138,9 @@ public class Agency {
 
     public void setTimeZone(String timeZone) { this.timeZone = timeZone; }
 
-    public int getTimeZoneOffset() { return timeZoneOffset; }
+    public Integer getTimeZoneOffset() { return timeZoneOffset; }
 
-    public void setTimeZoneOffset(int timeZoneOffset) {
+    public void setTimeZoneOffset(Integer timeZoneOffset) {
         this.timeZoneOffset = timeZoneOffset;
     }
 

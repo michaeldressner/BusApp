@@ -8,7 +8,7 @@ public class Route {
     private MapBounds bounds;
     private String color;
     private String description;
-    private Integer id;
+    private int id;
     private boolean active;
     private String longName;
     private String shortName;
@@ -24,6 +24,10 @@ public class Route {
         this.id = id;
 
         stops = new ArrayList<>();
+    }
+
+    public int getID() {
+        return id;
     }
 
     public String getColor() { return color; }
@@ -84,16 +88,12 @@ public class Route {
         return result;
     }
 
-    public int getID() {
-        return id;
-    }
-
     @Override
     public boolean equals(@Nullable Object obj) {
         if (obj instanceof Route) {
             Route route = (Route) obj;
 
-            return (this.id.equals(route.id));
+            return (this.id == route.id);
         }
 
         return super.equals(obj);
