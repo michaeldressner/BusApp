@@ -39,6 +39,36 @@ public class DataScrape {
 
             agency = new Agency(id, location, name);
 
+            boolean hasNotifications =
+                    agencyInfo.getBoolean("has_notifications");
+            agency.setNotifications(hasNotifications);
+            boolean hasSchedules =
+                    agencyInfo.getBoolean("has_schedules");
+            agency.setSchedules(hasSchedules);
+            boolean hasTripPlanning =
+                    agencyInfo.getBoolean("has_trip_planning");
+            agency.setTripPlanning(hasTripPlanning);
+            String color = agencyInfo.getString("color");
+            agency.setColor(color);
+            String longName = agencyInfo.getString("long_name");
+            agency.setLongName(longName);
+            if (!agencyInfo.isNull("position")) {
+                JSONArray position = agencyInfo.getJSONArray("position");
+                double lat = position.getDouble(0);
+                double lon = position.getDouble(1);
+                agency.setPosition(new Position(lat, lon));
+            }
+            String shortName = agencyInfo.getString("short_name");
+            agency.setShortName(shortName);
+            String textColor = agencyInfo.getString("text_color");
+            agency.setTextColor(textColor);
+            String timeZone = agencyInfo.getString("timezone");
+            agency.setTimeZone(timeZone);
+            int timeZoneOffset = agencyInfo.getInt("timezone_offset");
+            agency.setTimeZoneOffset(timeZoneOffset);
+            String url = agencyInfo.getString("url");
+            agency.setURL(url);
+
             return true;
         } catch (JSONException e) {
             return false;
@@ -60,14 +90,15 @@ public class DataScrape {
                 JSONArray position = stopObj.getJSONArray("position");
                 double latitude = position.getDouble(0);
                 double longitude = position.getDouble(1);
-                String description = stopObj.getString("description");
-                String locationType = stopObj.getString("location_type");
-                Object parentStation = stopObj.get("parent_station_id");
-                int parentStationID = (stopObj.isNull("parent_station_id")) ? 0 : (int) parentStation;
 
                 Stop stop = new Stop(code, id, name, latitude, longitude);
+                String description = stopObj.getString("description");
                 stop.setDescription(description);
+                String locationType = stopObj.getString("location_type");
                 stop.setLocationType(locationType);
+                Object parentStation = stopObj.get("parent_station_id");
+                int parentStationID = (stopObj.isNull("parent_station_id"))
+                        ? 0 : (int) parentStation;
                 stop.setParentStationID(parentStationID);
 
                 agency.addStop(stop);

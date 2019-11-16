@@ -86,6 +86,68 @@ public class Agency {
 
     public ArrayList<Stop> getStops() { return stops; }
 
+    public boolean arrivalPredictions() { return arrivalPredictions; }
+
+    public void setArrivalPredictions(boolean arrivalPredictions) {
+        this.arrivalPredictions = arrivalPredictions;
+    }
+
+    public MapBounds getBounds() { return bounds; }
+
+    public void setBounds(MapBounds bounds) { this.bounds = bounds; }
+
+    public String getColor() { return color; }
+
+    public void setColor(String color) { this.color = color; }
+
+    public boolean hasNotifications() { return hasNotifications; }
+
+    public void setNotifications(boolean hasNotifications) {
+        this.hasNotifications = hasNotifications;
+    }
+
+    public boolean hasSchedules() { return hasSchedules; }
+
+    public void setSchedules(boolean hasSchedules) {
+        this.hasSchedules = hasSchedules;
+    }
+
+    public boolean hasTripPlanning() { return hasTripPlanning; }
+
+    public void setTripPlanning(boolean hasTripPlanning) {
+        this.hasTripPlanning = hasTripPlanning;
+    }
+
+    public String getLongName() { return longName; }
+
+    public void setLongName(String longName) { this.longName = longName; }
+
+    public Position getPosition() { return position; }
+
+    public void setPosition(Position position) { this.position = position; }
+
+    public String getShortName() { return shortName; }
+
+    public void setShortName(String shortName) { this.shortName = shortName; }
+
+    public String getTextColor() { return textColor; }
+
+    public void setTextColor(String textColor) { this.textColor = textColor; }
+
+    public String getTimeZone() { return timeZone; }
+
+    public void setTimeZone(String timeZone) { this.timeZone = timeZone; }
+
+    public int getTimeZoneOffset() { return timeZoneOffset; }
+
+    public void setTimeZoneOffset(int timeZoneOffset) {
+        this.timeZoneOffset = timeZoneOffset;
+    }
+
+    public String getURL() { return url; }
+
+    public void setURL(String url) { this.url = url; }
+
     @Override
     public boolean equals(@Nullable Object obj) {
         if (obj instanceof Agency) {
