@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">PrincetonBus</string>
+    <string name="app_name">BusApp</string>
+    <string name="iv_logo_description">Logo of the app</string>
 </resources>
